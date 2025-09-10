@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@font-face {
+  font-display: swap;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/fonts/montserrat-v31-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/montserrat-v31-latin-700.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Fraunces";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/fonts/fraunces-v37-latin-700.woff2") format("woff2");
+}
+
+@theme {
+  --color-green-500: hsl(158, 36%, 37%);
+  --color-green-700: hsl(158, 42%, 18%);
+  --color-black: hsl(212, 21%, 14%);
+  --color-grey: hsl(228, 12%, 48%);
+  --color-cream: hsl(30, 38%, 92%);
+
+  --color-accent: var(--color-green-500);
+  --color-selection: var(--color-accent);
+  --color-selection-foreground: #ffffff;
+
+  --font-sans: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-montserrat: "Montserrat", var(--font-sans);
+  --font-fraunces: "Fraunces", var(--font-sans);
+}
+
+@layer components {
+  .btn-primary {
+    @apply flex w-full cursor-pointer items-center justify-center gap-4 rounded-md bg-green-500 px-8 py-[14px] text-sm font-semibold text-white transition-colors duration-150 ease-out hover:bg-green-700;
+  }
+  .focus-ring {
+    @apply focus-visible:ring-accent focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-offset-black focus-visible:outline-none;
+  }
+
+  .link {
+    @apply decoration-grey underline decoration-1 underline-offset-2 transition-all duration-200 ease-out;
+    text-decoration-skip-ink: auto;
+  }
+
+  @media (hover: hover) {
+    .link:hover {
+      @apply decoration-accent text-black underline-offset-4;
+    }
+  }
+}
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  font-synthesis-weight: none;
+  font-size: 100%;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-grey);
+  font-family: var(--font-montserrat);
+  font-size: 1rem;
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-selection-foreground);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--color-selection);
+  color: var(--color-selection-foreground);
+  text-shadow: none;
+}
+
+@media (forced-colors: active) {
+  ::selection {
+    background: Highlight;
+    color: HighlightText;
+  }
+}
+
+svg,
+img {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
